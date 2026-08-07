@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 4</title>
+    <style>
+        body{
+            margin:0;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-color:white ;
+        }
+        .container{
+            width: 85%;
+            margin:30px auto;
+            border: 2px solid black;
+            border-radius: 10px;
+            box-shadow: 0 0 15px gray;
+            overflow:hidden;
+        }
+        header{
+            height: 190px;
+            position: relative;
+            background-image: radial-gradient(circle at 30% 90%,lightblue,transparent 30%),linear-gradient(#3159a5,#587ac2);
+            background-size: 300px 150px, cover;
+            background-repeat: no-repeat;
+            background-position: left bottom, center;
+        }
+        .flower{
+            position:absolute;
+            top: 35px;
+            left:35px;
+            width: 55px;
+            height: 70px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 3px 3px 8px black;
+            overflow: hidden;
+        }
+        .flower img{
+            width:100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .flower1{
+            position: absolute;
+            top:75px;
+            left:80px;
+            width:50px;
+            height:65px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 3px 3px 8px black;
+            overflow:hidden;
+        }
+        .flower1 img{
+            width:100%;
+            height:100%;
+            object-fit: cover;
+        }
+        .apple{
+            position: absolute;
+            top:85px;
+            left:115px;
+            width:45px;
+            height: 55px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 3px 3px 8px black;
+            overflow: hidden;
+        }
+        .apple img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        nav{
+            display:flex;
+            background: linear-gradient(to right,#e63225,#999999);
+        }
+        nav a{
+            flex:1;
+            padding:10px;
+            text-align:center;
+            text-decoration: none;
+            color:black;
+            border-right: 1px solid gray;
+        }
+        nav a:hover{
+            background-color:#333333;
+            color:white;    
+        }
+        .content{
+            height:170px;
+            height: auto;
+            padding:20px;
+            background-color: #f3c3cf;
+        }
+        .items{
+            width:35%;
+            margin-left: 18%;
+            border-collapse: collapse;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 10px gray;
+        }
+        .items th{
+            padding:8px;
+            background: linear-gradient(to bottom,#7bdc1f,#3b8e16);
+        }
+        .items td{
+            padding: 9px;
+            text-align:center;
+        }
+        .items tr:nth-child(odd) {
+            background-color: #a8f33d;
+        }
+        .items tr:nth-child(even) {
+            background-color: #3e901c;
+            color: white;
+        }
+        .items tr:hover{
+            background-color:orange;
+            color: black;
+        }
+        .itemImg {
+            opacity: 0.2;
+            transition: opacity 0.5s;
+        }
+        .itemImg img{
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
+        .itemName:hover + .itemImg {
+            opacity: 1;
+        }
+        .login{
+            padding: 45px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-image:linear-gradient(rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 0.65)),radial-gradient(circle,#555555,#222222);
+            background-size: cover, cover;
+        }
+        .form{
+            width: 220px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px black;
+            border: 8px solid transparent;
+            border-image:linear-gradient(45deg,#3159a5,#65aee8) 1;
+        }
+        .form h2 {
+            text-align: center;
+        }
+        .form label {
+            display: block;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        input {
+            width: 95%;
+            padding: 8px;
+            margin-top: 4px;
+            box-sizing: border-box;
+            border: 2px solid #cccccc;
+            border-radius: 4px;
+        }
+        input:required {
+            border: 2px solid blue;
+        }
+        input:focus {
+            border: 3px solid red;
+            background-color: lightgreen;
+            outline: none;
+        }
+        input[type="email"]:valid {
+            color: blue;
+            background-color: #e8ffe8;
+        }
+        input[type="email"]:invalid {
+            color: red;
+        }
+        button {
+            width: 100%;
+            margin-top: 18px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(to right,#3159e8,#5276ee);
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 3px 5px gray;
+        }
+        button:hover {
+            background: linear-gradient(
+                to right,
+                #1739a5,
+                #3159e8
+            );
+        }
+        footer {
+            padding: 25px;
+            background-color: #f9e4bb;
+            font-style: italic;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <header>
+        <div class="flower"><img src="https://plus.unsplash.com/premium_photo-1676478746990-4ef5c8ef234a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Zmxvd2VyfGVufDB8fDB8fHww" alt="cloud flower"></div>
+        <div class="flower1"><img src="https://plus.unsplash.com/premium_photo-1703689520237-3667a9b43453?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHJvc2V8ZW58MHx8MHx8fDA%3D" alt="rose"></div>
+        <div class="apple"><img src="https://media.istockphoto.com/id/1439436349/photo/red-apple-isolated-on-white-background-clipping-path-full-depth-of-field.jpg?s=612x612&w=0&k=20&c=Zi8kdlLPWQSd7IN_KcrlLRU9MpdQo7YKyGQpH90iQmg=" alt="apple"></div>
+    </header>
+    <nav>
+        <a href="Home">HOME</a>
+        <a href="About">ABOUT</a>
+        <a href="Myself">MYSELF</a>
+        <a href="Others">OTHERS</a>
+    </nav>
+    <section class="content">
+        <table class="items">
+            <tr>
+                <th colspan="2">FAVORITES</th>
+            </tr>
+            <tr>
+                <td class="itemName">Apple</td>
+                <td class="itemImg"><img src="https://img.icons8.com/?size=100&id=7xhwCCYVCD5d&format=png&color=000000" alt="apple"></td>
+            </tr>
+            <tr>
+                <td class="itemName">Orange</td>
+                <td class="itemImg"><img src="https://img.icons8.com/?size=100&id=hfNCM7e9VGca&format=png&color=000000" alt="orange"></td>
+            </tr>
+            <tr>
+                <td class="itemName">Strawberry</td>
+                <td class="itemImg"><img src="https://img.icons8.com/?size=100&id=4vxGKgWKKJZ7&format=png&color=000000" alt="strawberry"></td>
+            </tr>
+            <tr>
+                <td class="itemName">Grapes</td>
+                <td class="itemImg"><img src="https://img.icons8.com/?size=100&id=WsAEBc9VDLm3&format=png&color=000000" alt="grapes"></td>
+            </tr>
+        </table>
+    </section>
+    <section class="login">
+        <div class="form">
+            <h2>Sign-In</h2>
+            <form>
+                <label>Username</label>
+                <input type="text" placeholder="Enter Username" required>
+                <input type="Password" placeholder="Enter Password" required>
+                <button>SIGN-IN</button>
+                </form>
+        </div>
+        <div class="form">
+            <h2>Sign-Up</h2>
+            <form>
+                <label>Name</label>
+                <input type="text" placeholder="Enter Name" required>
+                <input type="email" placeholder="Enter Email" required>
+                <input type="password" placeholder="Enter Password" required>
+                <button>SIGN-UP</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        Karunya<br><br>
+        2020-2021. URK24CS1164-Web Technology lab .All rights reserved
+    </footer>
+    </div>
+</body>
+</html>
