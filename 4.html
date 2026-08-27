@@ -1,43 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Currency Converter</title>
-    <script>
-        function convert() {
-            var value = parseFloat(document.getElementById("value").value);
-            var from = document.getElementById("from").value;
-            var to = document.getElementById("to").value;
-            var answer;
-            if (from == "Rupee" && to == "Dollar") {
-                answer = value * 0.015;
-            }
-            else if (from == "Dollar" && to == "Rupee") {
-                answer = value * 67.12;
-            }
-            else {
-                answer = value;
-            }
-            document.getElementById("answer").innerHTML = answer;
-        }
-    </script>
+    <title>Break Tag Example</title>
 </head>
 <body>
-    <fieldset>
-        <legend>Currency Converter</legend>
-        Convert
-        <input type="text" id="value">
-        <select id="from">
-            <option value="Rupee">Rupee</option>
-            <option value="Dollar">Dollar</option>
-        </select>
-        to
-        <select id="to">
-            <option value="Dollar">US Dollar</option>
-            <option value="Rupee">Indian Rupee</option>
-        </select>
-        <button onclick="convert()">Calculate</button>
-        <br><br>
-        <span id="answer"></span>
-    </fieldset>
+    <h1>Address</h1>
+    <p> Jason<br>
+    Karunya University<br>
+    Coimbatore<br>
+    Tamil Nadu </p>
 </body>
 </html>

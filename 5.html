@@ -1,39 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Coin Flip</title>
-    <script>
-        var heads = 0;
-        var tails = 0;
-        window.onload = function () {
-            document.getElementById("flip").addEventListener("click", flipFunction);
-        };
-        function flipFunction() {
-            var number = Math.floor(Math.random() * 2);
-            if (number == 0) {
-                document.getElementById("coin").src = "Heads.jpeg";
-                heads++;
-            }
-            else {
-                document.getElementById("coin").src = "Tails.jpeg";
-                tails++;
-            }
-            document.getElementById("num_heads").innerHTML = heads;
-            document.getElementById("num_tails").innerHTML = tails;
-        }
-    </script>
-</head>
 <body>
-    <h1>Heads or Tails?</h1>
-    <div>
-        <img src="Heads.jpeg" id="coin" width="150" height="150">
-        <br><br>
-        <button id="flip">Flip!</button>
-    </div>
-    <p>
-        Heads Total: <span id="num_heads">0</span>
-        <br>
-        Tails Total: <span id="num_tails">0</span>
-    </p>
+    <h1>My First Heading</h1>
+    <p>My first<br> paragraph.</p>
 </body>
 </html>
