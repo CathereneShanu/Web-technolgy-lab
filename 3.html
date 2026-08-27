@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Six Header Tags</title>
+    <title>Fruit Farm</title>
+    <script>
+        function grow() {
+            var rows = parseInt(document.getElementById("rows").value);
+            var columns = parseInt(document.getElementById("columns").value);
+            var arr = ["Orange.avif", "Apple.jpeg"];
+            document.getElementById("garden").innerHTML = "";
+            for (var i = 0; i < rows; i++) {
+                for (var j = 0; j < columns; j++) {
+                    var number = Math.floor(Math.random() * 2);
+                    document.getElementById("garden").innerHTML +=
+                        "<img src='" + arr[number] + "' width='80' height='80'>";
+                }
+                document.getElementById("garden").innerHTML += "<br>";
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>This is Heading 1</h1>
-    <h2>This is Heading 2</h2>
-    <h3>This is Heading 3</h3>
-    <h4>This is Heading 4</h4>
-    <h5>This is Heading 5</h5>
-    <h6>This is Heading 6</h6>
+    <h1>Fruit Farm</h1>
+    <label>Number of Rows:</label>
+    <input type="text" id="rows">
+    <br><br>
+    <label>Number of Columns:</label>
+    <input type="text" id="columns">
+    <br><br>
+    <button onclick="grow()">Plant Garden</button>
+    <br><br>
+    <div id="garden"></div>
 </body>
 </html>
