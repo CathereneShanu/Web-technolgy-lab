@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Birthday Cake Order Form</title>
+    <script>
+        window.onload = function () {
+            document.getElementById("submit").addEventListener("click", calculateOrder);
+        };
+        function calculateOrder() {
+            var small = parseInt(document.getElementById("small").value);
+            var medium = parseInt(document.getElementById("medium").value);
+            var large = parseInt(document.getElementById("large").value);
+            var cakeCost = (small * 100) + (medium * 200) + (large * 400);
+            var tax = cakeCost * 0.09;
+            var totalAfterTax = cakeCost + tax;
+            var tip = parseInt(
+                document.querySelector('input[name="tip"]:checked').value
+            );
+            var tipAmount = totalAfterTax * (tip / 100);
+            var total = totalAfterTax + tipAmount;
+            document.getElementById("price").innerHTML = total.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+
+    <h1>Birthday Cake Order Form</h1>
+    <fieldset>
+        # of 1/2kg Cakes
+        <input type="text" id="small">
+        <br><br>
+        # of 1kg Cakes
+        <input type="text" id="medium">
+        <br><br>
+        # of 2kg Cakes
+        <input type="text" id="large">
+        <br><br>
+        Tip:
+        <label>
+            <input type="radio" name="tip" value="10">
+            10%
+        </label>
+        <label>
+            <input type="radio" name="tip" value="15" checked>
+            15%
+        </label>
+        <label>
+            <input type="radio" name="tip" value="20">
+            20%
+        </label>
+        <br><br>
+        <button id="submit">Calculate Order</button>
+    </fieldset>
+    <p>
+        Cost of order: Rs.
+        <span id="price"></span>
+    </p>
+</body>
+</html>
