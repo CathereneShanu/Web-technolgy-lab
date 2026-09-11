@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cake Shop</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin: 0;
+        }
+        .shop {
+            width: 525px;
+            margin: auto;
+        }
+        .title {
+            background-color: #b5281e;
+            color: white;
+            padding: 7px;
+            font-size: 14px;
+        }
+        .cakes {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .cake {
+            width: 120px;
+            font-size: 10px;
+        }
+        .cake img {
+            width: 120px;
+            height: 125px;
+            object-fit: cover;
+        }
+        .order-title {
+            color: royalblue;
+            font-size: 20px;
+            margin: 10px;
+        }
+        .form {
+            width: 360px;
+            margin: auto;
+            text-align: left;
+        }
+        label {
+            display: block;
+            color: blue;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        input {
+            width: 100%;
+            height: 22px;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+        }
+        #order {
+            display: block;
+            width: 180px;
+            margin: 8px auto 10px;
+            background-color: royalblue;
+            color: white;
+            border: none;
+            padding: 6px;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid blue;
+            margin-top: 10px;
+        }
+        .bill-title {
+            color: green;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #bill {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        #totalText {
+            background-color: green;
+            color: white;
+            width: 190px;
+            padding: 3px;
+            font-size: 18px;
+        }
+        #total {
+            color: #a52a2a;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#order").click(function () {
+                let color = parseInt($("#color").val()) || 0;
+                let brown = parseInt($("#brown").val()) || 0;
+                let milky = parseInt($("#milky").val()) || 0;
+                let black = parseInt($("#black").val()) || 0;
+                let total =
+                    (color * 300) +
+                    (brown * 200) +
+                    (milky * 250) +
+                    (black * 350);
+                $("#total").text("Rs." + total);
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="shop">
+    <div class="title">CAKE SHOP</div>
+    <div class="cakes">
+        <div class="cake">
+            <img src="./colour cake.jpeg">
+            Color Cake – Rs. 300
+        </div>
+        <div class="cake">
+            <img src="./Brown cake.jpeg">
+            Brown Cake – Rs. 200
+        </div>
+        <div class="cake">
+            <img src="./Milky cake.jpeg">
+            Milky Cake – Rs. 250
+        </div>
+        <div class="cake">
+            <img src="./Black forest cake.jpeg">
+            Black Forest Cake – Rs. 350
+        </div>
+    </div>
+    <h2 class="order-title">Order Cake</h2>
+    <div class="form">
+        <label>Color Cake(Quantity)</label>
+        <input type="number" id="color" value="2">
+        <label>Brown Cake(Quantity)</label>
+        <input type="number" id="brown" value="1">
+        <label>Milky Cake(Quantity)</label>
+        <input type="number" id="milky" value="2">
+        <label>Black Forest Cake(Quantity)</label>
+        <input type="number" id="black" value="1">
+    </div>
+    <button id="order">Place Order</button>
+    <hr>
+    <div class="bill-title">
+        Purchase Order Bill!!!
+    </div>
+    <div id="bill">
+        <div id="totalText">
+            Total Price
+        </div>
+        <div id="total">
+            Rs.1650
+        </div>
+    </div>
+</div>
+</body>
+</html>

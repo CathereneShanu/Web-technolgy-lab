@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Organization Explorer</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+        #organization {
+            width: 500px;
+            margin: 20px auto;
+            text-align: left;
+        }
+        .project {
+            border: 2px solid black;
+            padding: 15px;
+        }
+        .team {
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 10px;
+        }
+        .employee {
+            padding: 6px;
+            margin: 4px;
+            cursor: pointer;
+        }
+        .selected {
+            background-color: yellow;
+        }
+        .highlight {
+            background-color: lightgreen;
+        }
+        button {
+            padding: 8px;
+            margin: 5px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            let selected = null;
+            $(".employee").click(function () {
+                $(".employee").removeClass("selected");
+                $(this).addClass("selected");
+                selected = $(this);
+                $("#result").text(
+                    "Selected Employee : " + selected.text()
+                );
+            });
+            $("#parent").click(function () {
+                $(".team").removeClass("highlight");
+                if (selected) {
+                    selected.parent().addClass("highlight");
+                    $("#result").text(
+                        "Parent Team : " +
+                        selected.parent().children("h3").text()
+                    );
+                }
+            });
+            $("#ancestors").click(function () {
+                $(".team, .project").removeClass("highlight");
+                if (selected) {
+                    selected.parents(".team, .project")
+                        .addClass("highlight");
+                    $("#result").text(
+                        "Project : " +
+                        selected.closest(".project")
+                        .children("h2").text()
+                    );
+                }
+            });
+            $("#projectEmployees").click(function () {
+                $(".employee").removeClass("highlight");
+                if (selected) {
+                    selected.closest(".project")
+                        .find(".employee")
+                        .addClass("highlight");
+                }
+            });
+            $("#teammates").click(function () {
+                $(".employee").removeClass("highlight");
+                if (selected) {
+                    selected.siblings(".employee")
+                        .addClass("highlight");
+                }
+            });
+            $("#senior").click(function () {
+                $(".employee").removeClass("highlight");
+                $(".employee")
+                    .filter(".senior")
+                    .addClass("highlight");
+            });
+            $("#reset").click(function () {
+                $(".employee, .team, .project")
+                    .removeClass("selected highlight");
+                selected = null;
+                $("#result").text("");
+            });
+        });
+    </script>
+</head>
+<body>
+<h2>Employee Organization Explorer</h2>
+<div id="organization">
+    <div class="project">
+        <h2>Project Alpha</h2>
+        <div class="team">
+            <h3>Development Team</h3>
+            <div class="employee">Arun - Developer</div>
+            <div class="employee senior">
+                Kavya - Senior Developer
+            </div>
+            <div class="employee">Rahul - Developer</div>
+        </div>
+        <div class="team">
+            <h3>Testing Team</h3>
+            <div class="employee">Meena - Tester</div>
+            <div class="employee senior">
+                Priya - Senior Tester
+            </div>
+            <div class="employee">Karthik - Tester</div>
+        </div>
+    </div>
+</div>
+<button id="parent">Show Parent Team</button>
+<button id="ancestors">Show All Ancestors</button>
+<button id="projectEmployees">Show Project Employees</button>
+<button id="teammates">Show Teammates</button>
+<button id="senior">Show Senior Employees</button>
+<button id="reset">Reset</button>
+<h3 id="result"></h3>
+</body>
+</html>

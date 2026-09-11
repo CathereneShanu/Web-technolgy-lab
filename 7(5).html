@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Management</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+        input {
+            padding: 7px;
+            margin: 5px;
+        }
+        button {
+            padding: 7px 12px;
+            margin: 5px;
+        }
+        table {
+            width: 600px;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        th {
+            background-color: lightblue;
+        }
+        .selected {
+            background-color: yellow;
+        }
+        #status {
+            padding: 10px;
+            margin: 10px auto;
+            width: 500px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            let selectedRow = null;
+            $("#add").click(function () {
+                let id = $("#id").val();
+                let name = $("#name").val();
+                let dept = $("#dept").val();
+                if (id == "" || name == "" || dept == "") {
+                    alert("Enter all details");
+                    return;
+                }
+                $("#employees tbody").append(
+                    "<tr>" +
+                    "<td>" + id + "</td>" +
+                    "<td>" + name + "</td>" +
+                    "<td>" + dept + "</td>" +
+                    "</tr>"
+                );
+                $("#status")
+                    .text("Employee added successfully.")
+                    .css("background-color", "lightgreen");
+                $("#id").val("");
+                $("#name").val("");
+                $("#dept").val("");
+            });
+            $("#employees").on("click", "tbody tr", function () {
+                $("tr").removeClass("selected");
+                $(this).addClass("selected");
+                selectedRow = this;
+                $("#id").val($(this).children().eq(0).text());
+                $("#name").val($(this).children().eq(1).text());
+                $("#dept").val($(this).children().eq(2).text());
+                $("#status")
+                    .text("Selected employee details loaded.")
+                    .css("background-color", "lightyellow");
+            });
+            $("#update").click(function () {
+                if (selectedRow == null) {
+                    alert("Select an employee");
+                    return;
+                }
+                $(selectedRow).children().eq(0).text($("#id").val());
+                $(selectedRow).children().eq(1).text($("#name").val());
+                $(selectedRow).children().eq(2).text($("#dept").val());
+                $("#status")
+                    .text("Employee updated successfully.")
+                    .css("background-color", "lightgreen");
+            });
+            $("#remove").click(function () {
+                if (selectedRow == null) {
+                    alert("Select an employee");
+                    return;
+                }
+                $(selectedRow).remove();
+                selectedRow = null;
+                $("#status")
+                    .text("Employee removed successfully.")
+                    .css("background-color", "lightcoral");
+            });
+            $("#dimensions").click(function () {
+                let width = $("#employees").width();
+                let height = $("#employees").height();
+                $("#status")
+                    .text("Table Width: " + width +
+                          "px, Height: " + height + "px")
+                    .css("background-color", "lightblue");
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>Employee Management Dashboard</h2>
+    <input type="text" id="id" placeholder="Employee ID">
+    <input type="text" id="name" placeholder="Employee Name">
+    <input type="text" id="dept" placeholder="Department">
+    <br>
+    <button id="add">Add Employee</button>
+    <button id="update">Update Employee</button>
+    <button id="remove">Remove Employee</button>
+    <button id="dimensions">Show Table Dimensions</button>
+    <table id="employees">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>Riya</td>
+                <td>HR</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>Arjun</td>
+                <td>IT</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>Meera</td>
+                <td>Finance</td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="status"></div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Card</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+        #product {
+            width: 350px;
+            margin: 30px auto;
+            padding: 20px;
+            border: 2px solid black;
+            background-color: lightblue;
+        }
+        button {
+            margin: 5px;
+            padding: 8px 15px;
+        }
+        #message {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#show").click(function () {
+                $("#product").show();
+            });
+            $("#hide").click(function () {
+                $("#product").hide();
+            });
+            $("#fade").click(function () {
+                $("#product").fadeToggle(1000);
+            });
+            $("#slide").click(function () {
+                $("#product").slideToggle(1000);
+            });
+            $("#animate").click(function () {
+                $("#product").animate({
+                    width: "450px",
+                    height: "250px"
+                }, 1000);
+            });
+            $("#stop").click(function () {
+                $("#product").stop();
+            });
+            $("#callback").click(function () {
+                $("#message").text("");
+
+                $("#product").fadeOut(1000, function () {
+                    $("#message").text("Animation completed successfully");
+                    $("#product").fadeIn(1000);
+                });
+            });
+            $("#chain").click(function () {
+                $("#product")
+                    .slideUp(500)
+                    .slideDown(500)
+                    .fadeOut(500)
+                    .fadeIn(500);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>Product Details</h2>
+    <div id="product">
+        <h2>Laptop Pro</h2>
+        <p><b>Price:</b> ₹65,000</p>
+        <p><b>Category:</b> Electronics</p>
+        <p><b>Stock Status:</b> Available</p>
+        <p><b>Description:</b> High performance laptop.</p>
+    </div>
+    <button id="show">Show</button>
+    <button id="hide">Hide</button>
+    <button id="fade">Fade</button>
+    <button id="slide">Slide</button>
+    <br>
+    <button id="animate">Animate</button>
+    <button id="stop">Stop Animation</button>
+    <button id="callback">Callback</button>
+    <button id="chain">Chaining</button>
+    <p id="message"></p>
+</body>
+</html>

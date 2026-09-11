@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Budget Calculator App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+        h2 {
+            background-color: black;
+            color: white;
+            padding: 8px;
+            width: 95%;
+            margin: 10px auto 20px;
+            font-size: 18px;
+        }
+        input {
+            width: 45px;
+            height: 22px;
+            margin: 5px;
+            text-align: center;
+        }
+        #amount {
+            width: 45px;
+        }
+        .percentage {
+            margin: 15px 5px;
+        }
+        button {
+            background-color: darkblue;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            font-size: 14px;
+            margin: 10px;
+        }
+        #results {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        .box {
+            width: 70px;
+            padding: 10px 5px;
+            color: white;
+            font-size: 12px;
+        }
+        #rentResult {
+            background-color: blue;
+        }
+        #accessoriesResult {
+            background-color: green;
+        }
+        #emergencyResult {
+            background-color: blue;
+        }
+        #savingResult {
+            background-color: deeppink;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#calculate").click(function () {
+                let amount = parseFloat($("#amount").val());
+                let rent = parseFloat($("#rent").val());
+                let accessories = parseFloat($("#accessories").val());
+                let emergency = parseFloat($("#emergency").val());
+                let saving = parseFloat($("#saving").val());
+                let total = rent + accessories + emergency + saving;
+                if (total != 100) {
+                    alert("The percentage must be 100%");
+                    return;
+                }
+                let rentAmount = amount * rent / 100;
+                let accessoriesAmount = amount * accessories / 100;
+                let emergencyAmount = amount * emergency / 100;
+                let savingAmount = amount * saving / 100;
+                $("#rentResult").html(
+                    "Room Rent<br>Rs." + rentAmount
+                );
+                $("#accessoriesResult").html(
+                    "Accessories<br>Rs." + accessoriesAmount
+                );
+                $("#emergencyResult").html(
+                    "Emergency<br>Rs." + emergencyAmount
+                );
+                $("#savingResult").html(
+                    "Saving<br>Rs." + savingAmount
+                );
+            });
+        });
+    </script>
+</head>
+<body>
+    <h2>Budget Calculator App</h2>
+    <b>Enter Amount that you want to Manage</b>
+    <br><br>
+    <input type="number" id="amount" value="15000">
+    <br><br>
+    <b>How would you like to divide your money?</b>
+    <div class="percentage">
+        <b>Room Rent(%):</b>
+        <input type="number" id="rent" value="50">
+        <b>Accessories(%):</b>
+        <input type="number" id="accessories" value="20">
+        <b>Emergency(%):</b>
+        <input type="number" id="emergency" value="20">
+        <b>Saving(%):</b>
+        <input type="number" id="saving" value="10">
+    </div>
+    <button id="calculate">Evaluate My Money</button>
+    <div id="results">
+        <div class="box" id="rentResult">
+            Room Rent<br>Rs.7500
+        </div>
+        <div class="box" id="accessoriesResult">
+            Accessories<br>Rs.3000
+        </div>
+        <div class="box" id="emergencyResult">
+            Emergency<br>Rs.3000
+        </div>
+        <div class="box" id="savingResult">
+            Saving<br>Rs.1500
+        </div>
+    </div>
+</body>
+</html>
