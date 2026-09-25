@@ -1,0 +1,212 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.header h2 {
+  color: #333;
+}
+
+.profile-btn {
+  border: none;
+  background: #4f46e5;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.profile-btn:hover {
+  background: #3730a3;
+}
+
+.dashboard {
+  padding: 40px;
+}
+
+.welcome {
+  margin-bottom: 30px;
+}
+
+.welcome h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: bisque;
+}
+
+.welcome p {
+  color: #a06262;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h3 {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.card p {
+  font-size: 28px;
+  font-weight: bold;
+  color: #4f46e5;
+}
+.dark {
+  background: #111827;
+  color: white;
+}
+
+.dark .header {
+  background: #1f2937;
+}
+
+.dark .header h2 {
+  color: white;
+}
+
+.dark .card {
+  background: #1f2937;
+}
+
+.dark .card h3 {
+  color: #d1d5db;
+}
+
+.dark .welcome p {
+  color: #d1d5db;
+}
+.course-section {
+  margin-top: 40px;
+}
+
+.course-section h2 {
+  margin-bottom: 20px;
+}
+
+.course-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.course-item {
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.dark .course-item {
+  background: #1f2937;
+}
+.task-section {
+  margin-top: 40px;
+}
+
+.task-section h2 {
+  margin-bottom: 15px;
+}
+
+.task-section input {
+  padding: 12px;
+  width: 280px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.task-section button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: white;
+  cursor: pointer;
+}
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 15px 20px;
+  }
+
+  .dashboard {
+    padding: 20px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .course-list {
+    grid-template-columns: 1fr;
+  }
+
+  .task-section input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+.profile-btn,
+.task-section button {
+  transition: all 0.3s ease;
+}
+
+.profile-btn:hover,
+.task-section button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #444;
+}
