@@ -1,0 +1,77 @@
+Experiment 9 - Working with MongoDB Using Shell Commands
+
+Database: collegeDB
+Collection: students
+
+Q1. Insert at least 10 student documents
+
+db.students.insertMany([
+{rollno:101,name:"Arun",department:"CSE",year:3,marks:85,city:"Coimbatore"},
+{rollno:102,name:"Priya",department:"ECE",year:3,marks:92,city:"Chennai"},
+{rollno:103,name:"Karthik",department:"CSE",year:2,marks:78,city:"Madurai"},
+{rollno:104,name:"Meena",department:"EEE",year:3,marks:88,city:"Coimbatore"},
+{rollno:105,name:"Rahul",department:"CSE",year:4,marks:67,city:"Salem"},
+{rollno:106,name:"Divya",department:"ECE",year:2,marks:95,city:"Chennai"},
+{rollno:107,name:"Vijay",department:"CSE",year:3,marks:81,city:"Trichy"},
+{rollno:108,name:"Anitha",department:"IT",year:4,marks:74,city:"Coimbatore"},
+{rollno:109,name:"Suresh",department:"ECE",year:3,marks:89,city:"Madurai"},
+{rollno:110,name:"Nisha",department:"CSE",year:2,marks:91,city:"Salem"}
+])
+
+Q2. Display all students
+
+db.students.find()
+
+Q3. Display students belonging to CSE
+
+db.students.find({department:"CSE"})
+
+Q4. Find students having marks greater than 80
+
+db.students.find({marks:{$gt:80}})
+
+Q5. Display only student name and marks
+
+db.students.find({}, {name:1, marks:1, _id:0})
+
+Q6. Find students belonging to CSE and third year
+
+db.students.find({department:"CSE",year:3})
+
+Q7. Find students belonging to CSE or ECE
+
+db.students.find({$or:[{department:"CSE"},{department:"ECE"}]})
+
+Q8. Sort students based on marks
+
+db.students.find().sort({marks:1})
+
+Q9. Display the top three students based on marks
+
+db.students.find().sort({marks:-1}).limit(3)
+
+Q10. Count the number of CSE students
+
+db.students.countDocuments({department:"CSE"})
+
+Q11. Update the marks of one student
+
+db.students.updateOne({rollno:101},{$set:{marks:90}})
+
+Q12. Add a status field to all CSE students
+
+db.students.updateMany({department:"CSE"},{$set:{status:"Active"}})
+
+Q13. Delete a student using roll number
+
+db.students.deleteOne({rollno:105})
+
+Q14. Display the distinct departments
+
+db.students.distinct("department")
+
+Q15. Calculate department-wise average marks
+
+db.students.aggregate([
+{$group:{_id:"$department",averageMarks:{$avg:"$marks"}}}
+])
