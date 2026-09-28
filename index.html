@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+</head>
+<body>
+    <h1>User Registration</h1>
+    <form action="/server" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required><br><br>
+
+        <label>Password:</label>
+        <input type="password" name="password" required><br><br>
+
+        <label>Age:</label>
+        <input type="number" name="age" required><br><br>
+
+        <label>Mobile Number:</label>
+        <input type="tel" name="mobile" required><br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" required><br><br>
+
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male" required> Male
+        <input type="radio" name="gender" value="Female"> Female<br><br>
+
+        <label>State:</label>
+        <select name="state" required>
+            <option value="">Select State</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Karnataka">Karnataka</option>
+        </select><br><br>
+
+        <label>Skills:</label>
+        <input type="checkbox" name="skills" value="JavaScript"> JavaScript
+        <input type="checkbox" name="skills" value="C++"> C++
+        <input type="checkbox" name="skills" value="Python"> Python<br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
